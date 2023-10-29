@@ -4,3 +4,4 @@ const path = require("path");
 
 
 
+module.exports = {mongo : mongoose,exp : express,path : path};
