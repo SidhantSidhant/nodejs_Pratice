@@ -12,7 +12,6 @@ mongoose.connect("mongodb://localhost:27017/foodProductList", {
         throw new error('database is not connected')
     })
 
-const foodProSchema = require("../schema").foodProSchema;
 const foodProListmodel = require("../schema").foodProListmodel;
 
 const createFoodProductDocument = async () => {
