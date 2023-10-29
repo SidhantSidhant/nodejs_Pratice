@@ -12,51 +12,8 @@ mongoose.connect("mongodb://localhost:27017/foodProductList", {
         throw new error('database is not connected')
     })
 
-const foodProSchema = mongoose.Schema({
-    porName: {
-        type: String,
-        trim: true,
-        lowercase: true,
-        minlength: 2,
-        maxlength: 22,
-        validate(productName) {
-            let regularExpress = /^[a-zA-Z ]*$/.test(productName);
-            !regularExpress ? console.log("error") : productName
-        }
-    },
-    proItem: {
-        type: Number,
-        validate(item) {
-            if (item > 0 && item <= 50) {
-                return item
-            } else {
-                console.log("error for productItem")
-            }
-        }
-    },
-    productPrice: {
-        type: Number,
-        validate(proPrice) {
-            if (proPrice >= 20 && proPrice <= 900) {
-                return proPrice
-            }
-        }
-    },
-    proPopularity: {
-        type: String,
-        validate(popularity) {
-
-        }
-
-    },
-    proContent: {
-        type: String,
-        enum: ["bread", 'jam', 'milk', "corn weight chikki", 'bread and potato']
-    },
-}, { _id: false })
-
-
-const foodProListmodel = new mongoose.model('productList', foodProSchema);
+const foodProSchema = require("../schema").foodProSchema;
+const foodProListmodel = require("../schema").foodProListmodel;
 
 const createFoodProductDocument = async () => {
     const pezzPro = new foodProListmodel({
