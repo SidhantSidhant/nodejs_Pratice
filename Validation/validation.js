@@ -1,7 +1,6 @@
-const mongoose = require("mongoose");
-const express = require("express");
-const path = require("path");
-
+const mongoose = require("../mongo").mongo;
+const express = require("../mongo").exp;
+const path = require("../mongo").path;
 
 const router = express();
 mongoose.connect("mongodb://localhost:27017/foodProductList", {
